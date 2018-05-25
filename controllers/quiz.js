@@ -193,32 +193,33 @@ exports.randomplay = (req, res, next) => {
 // GET /quizzes/randomcheck
 exports.randomcheck = (req, res, next) => {
     try{
-    req.session.randomPlay = req.session.randomPlay || [];
+         const {quiz, query, session} = req;
+         req.session.randomPlay = req.session.randomPlay || [];
 
-    const answer = query.answer || "";
-    const result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
+         const answer = query.answer || "";
+         const result = answer.toLowerCase().trim() === req.quiz.answer.toLowerCase().trim();
 
-    if (result){
-        if(req.session.randomPlay.indexOf(req.quiz.id) === -1){
-            req.session.randomPlay.push(req.quiz.id);
-        }
-    }
+         if (result){
+             if(req.session.randomPlay.indexOf(req.quiz.id) === -1){
+                req.session.randomPlay.push(req.quiz.id);
+             }
+         }
 
-    const score = req.session.randomPlay.length;
+         const score = req.session.randomPlay.length;
 
-    if(!result){
-        req.session.randomPlay = [];
-    }
+         if(!result){
+             req.session.randomPlay = [];
+         }
 
-    res.render('quizzes/random_result', {
-        answer,
-        result,
-        score
-    });
+         res.render('quizzes/random_result', {
+            answer,
+            result,
+            score
+         });
 
-    } catch (error){
+     } catch (error){
         next(error);
-    }
+     }
 };
 
 
