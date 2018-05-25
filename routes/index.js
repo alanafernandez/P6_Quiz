@@ -19,6 +19,10 @@ router.param('quizId', quizController.load);
 
 
 // Routes for the resource /quizzes
+
+router.get('/quizzes/randomplay',      quizController.randomplay);
+router.get('/quizzes/randomcheck/:quizId(\\d+)',  quizController.randomcheck);
+
 router.get('/quizzes',                     quizController.index);
 router.get('/quizzes/:quizId(\\d+)',       quizController.show);
 router.get('/quizzes/new',                 quizController.new);
