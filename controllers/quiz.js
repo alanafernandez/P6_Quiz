@@ -213,7 +213,6 @@ exports.play = (req, res, next) => {
     });
 };
 
-
 // GET /quizzes/:quizId/check
 exports.check = (req, res, next) => {
 
@@ -297,3 +296,4 @@ exports.randomcheck = (req, res, next) => {
         next(error);
      }
 };
+
