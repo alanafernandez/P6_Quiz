@@ -102,6 +102,10 @@ router.get('/quizzes/:quizId(\\d+)',
 router.get('/quizzes/new',
     sessionController.loginRequired,
 	quizController.new);
+router.get('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)/edit',
+    sessionController.loginRequired,
+    tipController.adminOrAuthorRequired,
+    tipController.edit);
 router.post('/quizzes',
     sessionController.loginRequired,
 	quizController.create);
@@ -113,6 +117,10 @@ router.put('/quizzes/:quizId(\\d+)',
     sessionController.loginRequired,
     quizController.adminOrAuthorRequired,
 	quizController.update);
+router.put('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)',
+    sessionController.loginRequired,
+    tipController.adminOrAuthorRequired,
+    tipController.update);
 router.delete('/quizzes/:quizId(\\d+)',
     sessionController.loginRequired,
     quizController.adminOrAuthorRequired,
